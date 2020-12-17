@@ -37,6 +37,8 @@ extern "C" {
     #include "neoscrypt.h"
     #include "crypto/argon2/argon2.h"
     #include "crypto/yescrypt/yescrypt.h"
+    #include "x22i.h"
+    #include "x25x.h"
 }
 
 #include "boolberry.h"
@@ -105,6 +107,8 @@ using namespace v8;
  DECLARE_CALLBACK(x16r, x16r_hash, 32);
  DECLARE_CALLBACK(x16rv2, x16rv2_hash, 32);
  DECLARE_CALLBACK(yescrypt, yescrypt_hash, 32);
+ DECLARE_CALLBACK(x22i, x22i_hash, 32);
+ DECLARE_CALLBACK(x25x, x25x_hash, 32);
 
 DECLARE_FUNC(argon2d) {
     if (info.Length() < 4)
@@ -422,6 +426,8 @@ NAN_MODULE_INIT(init) {
     NAN_EXPORT(target, x16rv2);
     NAN_EXPORT(target, neoscrypt);
     NAN_EXPORT(target, yescrypt);
+    NAN_EXPORT(target, x22i);
+    NAN_EXPORT(target, x25x);
 }
 
 NODE_MODULE(multihashing, init)
